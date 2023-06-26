@@ -32,7 +32,6 @@ public class AppDbContext : DbContext
   {
     int result = await base.SaveChangesAsync(cancellationToken).ConfigureAwait(false);
 
-    // ignore events if no dispatcher provided
     if (_dispatcher == null) return result;
 
     // dispatch events only if save was successful
