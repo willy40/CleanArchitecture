@@ -23,8 +23,8 @@ public class Project : EntityBase, IAggregateRoot
 
   public void AddItem(ToDoItem newItem)
   {
-    Guard.Against.Null(newItem, nameof(newItem));
-    _items.Add(newItem);
+    var _newItem = Guard.Against.Null(newItem, nameof(newItem));
+    _items.Add(_newItem);
 
     var newItemAddedEvent = new NewItemAddedEvent(this, newItem);
     base.RegisterDomainEvent(newItemAddedEvent);
